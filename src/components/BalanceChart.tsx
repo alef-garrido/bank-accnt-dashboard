@@ -1,7 +1,6 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { currencyFormatter } from '../utils/formatters';
 
-// Sample data for a full year to visualize balance trends
 const data = [
   { date: 'Jan', balance: 2000 },
   { date: 'Feb', balance: 2500 },
@@ -18,7 +17,7 @@ const data = [
 ];
 
 export const BalanceChart = () => {
-  // Tooltip formatter that safely handles `undefined` values from Recharts
+  // handles `undefined` values 
   const tooltipFormatter: (value?: number) => [string, 'Balance'] = (value) => [
     value === undefined ? '—' : currencyFormatter(value),
     'Balance',
