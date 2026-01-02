@@ -1,0 +1,55 @@
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { currencyFormatter } from '../utils/formatters';
+
+// Sample data for a full year to visualize balance trends
+const data = [
+  { date: 'Jan', balance: 2000 },
+  { date: 'Feb', balance: 2500 },
+  { date: 'Mar', balance: 2200 },
+  { date: 'Apr', balance: 3000 },
+  { date: 'May', balance: 3200 },
+  { date: 'Jun', balance: 2800 },
+  { date: 'Jul', balance: 3500 },
+  { date: 'Aug', balance: 3700 },
+  { date: 'Sep', balance: 3600 },
+  { date: 'Oct', balance: 4000 },
+  { date: 'Nov', balance: 4200 },
+  { date: 'Dec', balance: 4500 },
+];
+
+export const BalanceChart = () => {
+  // Tooltip formatter that safely handles `undefined` values from Recharts
+  const tooltipFormatter: (value?: number) => [string, 'Balance'] = (value) => [
+    value === undefined ? '—' : currencyFormatter(value),
+    'Balance',
+  ];
+  return (
+    <div className="bg-white p-6 rounded-xl shadow-sm h-[350px] w-full">
+      <h3 className="text-lg font-semibold text-gray-700 mb-4">Balance Over Time</h3>
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart data={data}>
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
+          <XAxis 
+            dataKey="date" 
+            axisLine={false} 
+            tickLine={false} 
+            tick={{ fill: '#9ca3af', fontSize: 12 }} 
+          />
+          <YAxis/>
+          <Tooltip
+            formatter={tooltipFormatter}
+            contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+          />
+          <Line 
+            type="monotone" 
+            dataKey="balance" 
+            stroke="#3b82f6" 
+            strokeWidth={3} 
+            dot={{ r: 4, fill: '#3b82f6' }}
+            activeDot={{ r: 6, strokeWidth: 0 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};
