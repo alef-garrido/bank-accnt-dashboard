@@ -17,3 +17,14 @@ export const calculateCategoryTotals = (transactions: Transaction[]) => {
     value: totals[key]
   }));
 };
+
+
+export const aggregateMonthlyData = () => {
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];  
+  
+  return months.map(month => ({
+    name: month,
+    income: Math.floor(Math.random() * 5000) + 2000, // Mock data dinámica
+    expenses: Math.floor(Math.random() * 3000) + 1000,
+  }));
+};

@@ -1,6 +1,7 @@
 import './App.css'
 import { BalanceChart } from './components/BalanceChart'
 import { CategoryChart } from './components/CategoryChart'
+import { MonthlyComparisonChart } from './components/MonthlyComparisonChart'
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
           </div>
           <div className='h-[400px]'>
             <CategoryChart />
+          </div>
+          <div className='h-[400px]'>
+            <MonthlyComparisonChart />
           </div>
         </div>
       </div>
