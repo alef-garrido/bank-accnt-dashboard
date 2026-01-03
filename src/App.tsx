@@ -35,7 +35,10 @@ function App() {
             <TransactionForm onAddTransaction={(tx) => setTransactions(prev => [tx, ...prev])} />
           </div>
           <div className="lg:col-span-2">
-            <TransactionTable transactions={transactions} />
+            <TransactionTable
+              transactions={transactions}
+              onDeleteTransaction={(id) => setTransactions(prev => prev.filter(t => t.id !== id))}
+            />
           </div>
         </div>
 
