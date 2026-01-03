@@ -1,8 +1,13 @@
 import { currencyFormatter } from '../utils/formatters';
+import { HiTrash } from 'react-icons/hi2';
 import type { Transaction } from '../types';
-import { mockTransactions } from '../types';
 
-export const TransactionTable = () => {
+interface TransactionTableProps {
+  transactions: Transaction[];
+  onDeleteTransaction?: (id: string) => void;
+}
+
+export const TransactionTable = ({ transactions, onDeleteTransaction }: TransactionTableProps) => {
   return (
     <div className="border border-gray-100 ">
       <div className="border-b border-gray-100 p-4 flex justify-between items-center">
@@ -17,7 +22,12 @@ export const TransactionTable = () => {
         </div>
         <button className="text-sm font-medium hover:underline">View All</button>
       </div>
-      
+
+      {transactions.length === 0 ? (
+        <div className="p-6 text-center text-gray-500">
+          <p className="text-sm">No hay transacciones aún. ¡Agrega la primera para ver tus estadísticas!</p>
+        </div>
+      ) : (
       <div className="overflow-x-auto">
         <table className="w-full min-w-[640px] text-left">
           <thead className="text-xs uppercase">
@@ -26,10 +36,11 @@ export const TransactionTable = () => {
               <th className="font-medium">Description</th>
               <th className="font-medium">Category</th>
               <th className="font-medium text-right">Amount</th>
+              <th className="font-medium">&nbsp;</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {mockTransactions.map((t: Transaction) => (
+            {transactions.map((t: Transaction) => (
               <tr key={t.id}>
                 <td className="text-sm">{t.date}</td>
                 <td className="text-sm font-medium">{t.description}</td>
@@ -41,11 +52,28 @@ export const TransactionTable = () => {
                 <td className="text-sm text-right">
                   {t.type === 'income' ? '+' : '-'}{currencyFormatter(t.amount)}
                 </td>
+                <td className="text-sm text-right">
+                  {onDeleteTransaction && (
+                    <button
+                      aria-label={`Delete transaction ${t.description}`}
+                      title="Delete"
+                      className="inline-flex items-center justify-center px-2 py-1 text-sm rounded-md text-red-600 hover:bg-red-50"
+                      onClick={() => {
+                        if (confirm('Are you sure you want to delete this transaction?')) {
+                          onDeleteTransaction(t.id);
+                        }
+                      }}
+                    >
+                      <HiTrash />
+                    </button>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      )}
     </div>
   );
 };
