@@ -10,7 +10,12 @@ const mockData = [
   { name: 'Entertainment', value: 150 },
 ];
 
-export const CategoryChart = () => {
+interface CategoryChartProps {
+  data?: { name: string; value: number }[];
+}
+
+export const CategoryChart = ({ data }: CategoryChartProps) => {
+  const chartData = data ?? mockData;
   // handles `undefined` values from Recharts
   const tooltipFormatter = (value?: number): string =>
     value === undefined ? '—' : currencyFormatter(value);
@@ -21,7 +26,7 @@ export const CategoryChart = () => {
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
-            data={mockData}
+            data={chartData}
             cx="50%"
             cy="50%"
             innerRadius={60}
@@ -29,7 +34,7 @@ export const CategoryChart = () => {
             paddingAngle={5}
             dataKey="value"
           >
-            {mockData.map((_, index) => (
+            {chartData.map((_, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>

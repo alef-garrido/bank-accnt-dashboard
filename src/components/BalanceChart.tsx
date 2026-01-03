@@ -1,7 +1,7 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { currencyFormatter } from '../utils/formatters';
 
-const data = [
+const defaultData = [
   { date: 'Jan', balance: 2000 },
   { date: 'Feb', balance: 2500 },
   { date: 'Mar', balance: 2200 },
@@ -16,7 +16,12 @@ const data = [
   { date: 'Dec', balance: 4500 },
 ];
 
-export const BalanceChart = () => {
+interface BalanceChartProps {
+  data?: { date: string; balance: number }[];
+}
+
+export const BalanceChart = ({ data }: BalanceChartProps) => {
+  const chartData = data ?? defaultData;
   // handles `undefined` values 
   const tooltipFormatter: (value?: number) => [string, 'Balance'] = (value) => [
     value === undefined ? '—' : currencyFormatter(value),
@@ -27,7 +32,7 @@ export const BalanceChart = () => {
       <h3 className="text-lg font-semibold text-gray-700 mb-4 flex-shrink-0">Balance Over Time</h3>
       <div className="flex-grow px-8 min-h-0"> 
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data}>
+        <LineChart data={chartData}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
           <XAxis 
             dataKey="date" 

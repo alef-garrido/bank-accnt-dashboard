@@ -1,19 +1,24 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { currencyFormatter } from '../utils/formatters';
 
-const data = [
+const defaultData = [
   { name: 'Jan', income: 4500, expenses: 3100 },
   { name: 'Feb', income: 5200, expenses: 4800 },
   { name: 'Mar', income: 4800, expenses: 3800 },
   { name: 'Apr', income: 6100, expenses: 4200 },
 ];
 
-export const MonthlyComparisonChart = () => {
+interface MonthlyComparisonChartProps {
+  data?: { name: string; income: number; expenses: number }[];
+}
+
+export const MonthlyComparisonChart = ({ data }: MonthlyComparisonChartProps) => {
+  const chartData = data ?? defaultData;
   return (
     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 h-[350px] w-full">
       <h3 className="text-lg font-semibold text-gray-700 mb-4">Income vs Expenses</h3>
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+        <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
           <XAxis 
             dataKey="name" 

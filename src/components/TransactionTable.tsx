@@ -1,8 +1,11 @@
 import { currencyFormatter } from '../utils/formatters';
 import type { Transaction } from '../types';
-import { mockTransactions } from '../types';
 
-export const TransactionTable = () => {
+interface TransactionTableProps {
+  transactions: Transaction[];
+}
+
+export const TransactionTable = ({ transactions }: TransactionTableProps) => {
   return (
     <div className="border border-gray-100 ">
       <div className="border-b border-gray-100 p-4 flex justify-between items-center">
@@ -29,7 +32,7 @@ export const TransactionTable = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {mockTransactions.map((t: Transaction) => (
+            {transactions.map((t: Transaction) => (
               <tr key={t.id}>
                 <td className="text-sm">{t.date}</td>
                 <td className="text-sm font-medium">{t.description}</td>
