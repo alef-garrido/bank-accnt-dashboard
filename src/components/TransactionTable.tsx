@@ -5,8 +5,16 @@ import { mockTransactions } from '../types';
 export const TransactionTable = () => {
   return (
     <div className="border border-gray-100 ">
-      <div className="border-b border-gray-100 flex justify-between items-center">
-        <h3 className="text-lg font-semibold">Recent Transactions</h3>
+      <div className="border-b border-gray-100 p-4 flex justify-between items-center">
+        <div className="flex items-center gap-4">
+          <h3 className="text-lg font-semibold">Recent Transactions</h3>
+          <input
+            type="text"
+            aria-label="Search transactions"
+            placeholder="Search transactions..."
+            className="px-3 py-2 border border-gray-200 rounded-md text-sm w-64 bg-white"
+          />
+        </div>
         <button className="text-sm font-medium hover:underline">View All</button>
       </div>
       
