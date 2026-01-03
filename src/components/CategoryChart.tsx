@@ -16,7 +16,7 @@ export const CategoryChart = () => {
     value === undefined ? '—' : currencyFormatter(value);
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 h-full w-full flex flex-col">
+    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 h-full w-full flex flex-col min-h-0">
       <h3 className="text-lg font-semibold text-gray-700 mb-4 flex-shrink-0">Spending by Category</h3>
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
