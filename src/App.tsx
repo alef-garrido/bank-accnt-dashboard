@@ -3,6 +3,7 @@ import { BalanceChart } from './components/BalanceChart'
 import { CategoryChart } from './components/CategoryChart'
 import { MonthlyComparisonChart } from './components/MonthlyComparisonChart'
 import { StatsGrid } from './components/StatsGrid'
+import { TransactionTable } from './components/TransactionTable'
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
         <h1 className='text-3xl md:text-4xl font-bold text-gray-900 mb-8'>
           Financial Analytics Dashboard
         </h1>
+                  <div className='mt-8'>
+            <TransactionTable />
+          </div>
         <StatsGrid />
         <div>
           <div className='h-[400px]'>
@@ -22,7 +26,9 @@ function App() {
           <div className='h-[400px]'>
             <MonthlyComparisonChart />
           </div>
+
         </div>
+
       </div>
     </div>
   )

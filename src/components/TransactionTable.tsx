@@ -1,5 +1,6 @@
 import { currencyFormatter } from '../utils/formatters';
-import { Transaction, mockTransactions } from '../types';
+import type { Transaction } from '../types';
+import { mockTransactions } from '../types';
 
 export const TransactionTable = () => {
   return (
