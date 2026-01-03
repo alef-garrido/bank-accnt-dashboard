@@ -2,6 +2,7 @@ import './App.css'
 import { BalanceChart } from './components/BalanceChart'
 import { CategoryChart } from './components/CategoryChart'
 import { MonthlyComparisonChart } from './components/MonthlyComparisonChart'
+import { StatsGrid } from './components/StatsGrid'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <h1 className='text-3xl md:text-4xl font-bold text-gray-900 mb-8'>
           Financial Analytics Dashboard
         </h1>
+        <StatsGrid />
         <div>
           <div className='h-[400px]'>
             <BalanceChart />
