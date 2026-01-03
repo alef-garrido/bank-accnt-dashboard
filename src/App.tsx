@@ -1,14 +1,24 @@
 import './App.css'
 import { BalanceChart } from './components/BalanceChart'
+import { CategoryChart } from './components/CategoryChart'
 
 function App() {
-
   return (
-   
-      <div className='w-[80vw] h-auto'>
-        <BalanceChart />
+    <div className='min-h-screen p-6 md:p-12'>
+      <div className='max-w-7xl mx-auto'>
+        <h1 className='text-3xl md:text-4xl font-bold text-gray-900 mb-8'>
+          Financial Analytics Dashboard
+        </h1>
+        <div>
+          <div className='h-[400px]'>
+            <BalanceChart />
+          </div>
+          <div className='h-[400px]'>
+            <CategoryChart />
+          </div>
+        </div>
       </div>
-    
+    </div>
   )
 }
 

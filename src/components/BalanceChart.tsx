@@ -23,8 +23,9 @@ export const BalanceChart = () => {
     'Balance',
   ];
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm h-[350px] w-full">
-      <h3 className="text-lg font-semibold text-gray-700 mb-4">Balance Over Time</h3>
+    <div className="shadow-sm h-full flex flex-col">
+      <h3 className="text-lg font-semibold text-gray-700 mb-4 flex-shrink-0">Balance Over Time</h3>
+      <div className="flex-grow px-8"> 
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
@@ -49,6 +50,7 @@ export const BalanceChart = () => {
           />
         </LineChart>
       </ResponsiveContainer>
+      </div>
     </div>
   );
 };
