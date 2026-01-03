@@ -1,12 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { currencyFormatter } from '../utils/formatters';
 
-const defaultData = [
-  { name: 'Jan', income: 4500, expenses: 3100 },
-  { name: 'Feb', income: 5200, expenses: 4800 },
-  { name: 'Mar', income: 4800, expenses: 3800 },
-  { name: 'Apr', income: 6100, expenses: 4200 },
-];
+const defaultData: { name: string; income: number; expenses: number }[] = [];
 
 interface MonthlyComparisonChartProps {
   data?: { name: string; income: number; expenses: number }[];
@@ -14,6 +9,15 @@ interface MonthlyComparisonChartProps {
 
 export const MonthlyComparisonChart = ({ data }: MonthlyComparisonChartProps) => {
   const chartData = data ?? defaultData;
+
+  if (!chartData || chartData.length === 0) {
+    return (
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 h-[350px] w-full flex flex-col justify-center items-center">
+        <p className="text-gray-500 text-sm">No hay datos de ingresos vs gastos disponibles.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 h-[350px] w-full">
       <h3 className="text-lg font-semibold text-gray-700 mb-4">Income vs Expenses</h3>

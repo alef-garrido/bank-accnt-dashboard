@@ -22,7 +22,12 @@ export const TransactionTable = ({ transactions, onDeleteTransaction }: Transact
         </div>
         <button className="text-sm font-medium hover:underline">View All</button>
       </div>
-      
+
+      {transactions.length === 0 ? (
+        <div className="p-6 text-center text-gray-500">
+          <p className="text-sm">No hay transacciones aún. ¡Agrega la primera para ver tus estadísticas!</p>
+        </div>
+      ) : (
       <div className="overflow-x-auto">
         <table className="w-full min-w-[640px] text-left">
           <thead className="text-xs uppercase">
@@ -68,6 +73,7 @@ export const TransactionTable = ({ transactions, onDeleteTransaction }: Transact
           </tbody>
         </table>
       </div>
+      )}
     </div>
   );
 };
