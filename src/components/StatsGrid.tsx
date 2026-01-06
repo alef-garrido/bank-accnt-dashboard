@@ -9,23 +9,23 @@ interface StatsGridProps {
 
 export const StatsGrid = ({ totalBalance, totalIncome, totalExpenses }: StatsGridProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <div className="flex m-4 gap-6 justify-center">
       <StatCard 
         title="Total Balance" 
         amount={totalBalance} 
-        icon={<HiScale size={24} />} 
+        icon={<HiScale size={32} />} 
         color="blue" 
       />
       <StatCard 
         title="Total Income" 
         amount={totalIncome} 
-        icon={<HiArrowTrendingUp size={24} />} 
+        icon={<HiArrowTrendingUp size={32} />} 
         color="green" 
       />
       <StatCard 
         title="Total Expenses" 
         amount={totalExpenses} 
-        icon={<HiArrowTrendingDown size={24} />} 
+        icon={<HiArrowTrendingDown size={32} />} 
         color="red" 
       />
     </div>

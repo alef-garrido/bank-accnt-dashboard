@@ -12,16 +12,16 @@ export const MonthlyComparisonChart = ({ data }: MonthlyComparisonChartProps) =>
 
   if (!chartData || chartData.length === 0) {
     return (
-      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 h-[350px] w-full flex flex-col justify-center items-center">
-        <p className="text-gray-500 text-sm">No hay datos de ingresos vs gastos disponibles.</p>
+      <div className="w-full h-96 bg-white p-6 rounded-lg shadow-md flex items-center justify-center">
+        <p className="text-gray-500">No hay datos de ingresos vs gastos disponibles.</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 h-[350px] w-full">
-      <h3 className="text-lg font-semibold text-gray-700 mb-4">Income vs Expenses</h3>
-      <ResponsiveContainer width="100%" height="100%">
+    <div className="w-full h-full bg-white p-6 rounded-lg shadow-md">
+      <h3 className="text-lg font-semibold mb-4">Income vs Expenses</h3>
+      <ResponsiveContainer width="100%" height="90%">
         <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
           <XAxis 

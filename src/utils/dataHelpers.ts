@@ -32,7 +32,7 @@ export const aggregateMonthlyData = () => {
 const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 export const calculateMonthlyComparison = (transactions: { amount: number; type: 'income'|'expense'; date: string }[]) => {
-  const months = MONTH_NAMES.map((name, idx) => ({ name, income: 0, expenses: 0 }));
+  const months = MONTH_NAMES.map((name) => ({ name, income: 0, expenses: 0 }));
 
   transactions.forEach(t => {
     const d = new Date(t.date);

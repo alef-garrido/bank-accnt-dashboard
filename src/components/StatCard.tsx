@@ -8,16 +8,14 @@ interface StatCardProps {
   color: 'blue' | 'green' | 'red';
 }
 
-const colorMap = {
-  blue: 'bg-blue-50 text-blue-600',
-  green: 'bg-green-50 text-green-600',
-  red: 'bg-red-50 text-red-600',
-};
-
 export const StatCard = ({ title, amount, icon, color }: StatCardProps) => {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center space-x-4">
-      <div className={`p-3 rounded-lg ${colorMap[color]}`}>
+    <div className="text-center grid place-items-center m-4 rounded-lg p-6 shadow-md bg-white w-64">
+      <div className={
+        color === 'blue' ? 'bg-blue-50 text-blue-600' :
+        color === 'green' ? 'bg-green-50 text-green-600' :
+        'bg-red-50 text-red-600'
+      }>
         {icon}
       </div>
       <div>

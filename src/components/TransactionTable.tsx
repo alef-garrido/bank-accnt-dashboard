@@ -9,7 +9,7 @@ interface TransactionTableProps {
 
 export const TransactionTable = ({ transactions, onDeleteTransaction }: TransactionTableProps) => {
   return (
-    <div className="border border-gray-100 ">
+    <div className="h-75 p-6 border border-gray-100 rounded-lg shadow-md bg-white overflow-y-scroll">
       <div className="border-b border-gray-100 p-4 flex justify-between items-center">
         <div className="flex items-center gap-4">
           <h3 className="text-lg font-semibold">Recent Transactions</h3>
