@@ -9,7 +9,7 @@ interface StatsGridProps {
 
 export const StatsGrid = ({ totalBalance, totalIncome, totalExpenses }: StatsGridProps) => {
   return (
-    <div className="grid justify-center md:flex md:m-4 md:gap-6">
+    <div className="grid justify-center md:flex md:m-2 md:gap-6">
       <StatCard 
         title="Total Balance" 
         amount={totalBalance} 

@@ -23,19 +23,18 @@ function App() {
   const totalBalance = totalIncome - totalExpenses;
   return (
     <>
-          <h1 className='text-3xl font-bold my-6 text-center'>
-            Financial Analytics Dashboard
-          </h1>
-          <hr />
+      <h1 className='text-3xl font-bold my-6 text-center'>
+        Financial Analytics Dashboard
+      </h1>
+      <hr />
+
       <div className='bg-gray-100 min-h-screen'>
-
-        <div className='md:p-8'>
-
-          <div className='mb-8'>
-          <StatsGrid totalBalance={totalBalance} totalIncome={totalIncome} totalExpenses={totalExpenses} />
+        <div className='md:px-4'>
+          <div className='mb-2'>
+            <StatsGrid totalBalance={totalBalance} totalIncome={totalIncome} totalExpenses={totalExpenses} />
           </div>
-        
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8'>
+
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-2'>
             <div className="md:col-span-2 lg:col-span-1">
               <TransactionForm onAddTransaction={(tx) => setTransactions(prev => [tx, ...prev])} />
             </div>
@@ -47,7 +46,7 @@ function App() {
             </div>
           </div>
 
-          <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
+          <div className='grid grid-cols-1 lg:grid-cols-3 gap-2'>
             <div className='h-[400px]'>
               <BalanceChart data={calculateBalanceOverTime(transactions)} />
             </div>
