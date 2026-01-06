@@ -10,8 +10,8 @@ interface TransactionTableProps {
 export const TransactionTable = ({ transactions, onDeleteTransaction }: TransactionTableProps) => {
   return (
     <div className="h-75 p-6 border border-gray-100 rounded-lg shadow-md bg-white overflow-y-scroll">
-      <div className="border-b border-gray-100 p-4 flex justify-between items-center">
-        <div className="flex items-center gap-4">
+      <div className="border-b border-gray-100 p-4 md:flex justify-between items-center">
+        <div className="md:flex items-center gap-4">
           <h3 className="text-lg font-semibold">Recent Transactions</h3>
           <input
             type="text"
