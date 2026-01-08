@@ -3,6 +3,7 @@ import { Dashboard } from './components/Dashboard'
 import { TooltipProvider } from './components/ui/tooltip'
 import { ToastProvider } from './components/ui/toast'
 import { Toaster } from './components/ui/toaster'
+import { Toaster as SonnerToaster } from './components/ui/sonner'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import type { Transaction } from './types'
 import { mockTransactions } from './types'
@@ -23,6 +24,7 @@ function App() {
           onDeleteTransaction={(id) => setTransactions(prev => prev.filter(t => t.id !== id))}
         />
         <Toaster />
+        <SonnerToaster position="bottom-right" />
       </TooltipProvider>
     </ToastProvider>
   )
