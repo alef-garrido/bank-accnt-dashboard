@@ -49,11 +49,9 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       setToasts((prev) => [...prev, newToast]);
 
       if (newToast.duration && newToast.duration > 0) {
-        const timer = setTimeout(() => {
+        setTimeout(() => {
           removeToast(id);
         }, newToast.duration);
-
-        return id;
       }
 
       return id;
