@@ -24,6 +24,8 @@ interface ToastContextType {
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
+export { ToastContext };
+
 export function useToast() {
   const context = useContext(ToastContext);
   if (!context) {
@@ -72,48 +74,60 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
 export const ToastViewport = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className = "", ...props }, ref) => {
-    const baseStyles =
-      "fixed bottom-0 right-0 z-[100] flex flex-col gap-2 p-4 w-full sm:w-96 pointer-events-none";
-
-    return <div ref={ref} className={`${baseStyles} ${className}`} {...props} />;
-  }
-);
-
-ToastViewport.displayName = "ToastViewport";
-
-interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: ToastVariant;
-  isOpen?: boolean;
-  onClose?: () => void;
-}
-
-export const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
-  ({ className = "", variant = "default", isOpen = true, onClose, children, ...props }, ref) => {
-    if (!isOpen) return null;
+    const { toasts } = useToast();
 
     const baseStyles =
-      "group pointer-events-auto relative flex w-full items-center justify-between gap-4 rounded-md border p-4 shadow-lg transition-all animate-in slide-in-from-bottom-full duration-300";
-
-    const variantStyles: Record<ToastVariant, string> = {
-      default: "border-gray-300 bg-white text-gray-900",
-      destructive: "border-red-300 bg-red-50 text-red-900",
-    };
-
-    const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${className}`;
+      "fixed bottom-0 right-0 z-[100] flex flex-col-reverse sm:flex-col gap-2 p-4 w-full sm:w-96 pointer-events-none";
 
     return (
-      <div ref={ref} className={combinedClassName} {...props}>
-        {children}
+      <div ref={ref} className={`${baseStyles} ${className}`} {...props}>
+        {toasts.map((toast) => (
+          <Toast key={toast.id} toast={toast} />
+        ))}
       </div>
     );
   }
 );
 
-Toast.displayName = "Toast";
+ToastViewport.displayName = "ToastViewport";
 
-interface ToastTitleProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface ToastComponentProps {
+  toast: Toast;
+}
 
-export const ToastTitle = React.forwardRef<HTMLDivElement, ToastTitleProps>(
+const Toast: React.FC<ToastComponentProps> = ({ toast }) => {
+  const { removeToast } = useToast();
+
+  if (!toast.isOpen) return null;
+
+  const baseStyles =
+    "group pointer-events-auto relative flex w-full items-center justify-between gap-4 overflow-hidden rounded-md border p-6 shadow-lg transition-all animate-in slide-in-from-right-full duration-300";
+
+  const variantStyles: Record<ToastVariant, string> = {
+    default: "border-gray-300 bg-white text-gray-900",
+    destructive: "border-red-300 bg-red-50 text-red-900",
+  };
+
+  return (
+    <div className={`${baseStyles} ${variantStyles[toast.variant || "default"]}`}>
+      <div className="flex-1 flex flex-col gap-1">
+        {toast.title && <ToastTitle>{toast.title}</ToastTitle>}
+        {toast.description && <ToastDescription>{toast.description}</ToastDescription>}
+      </div>
+
+      <div className="flex items-center gap-2">
+        {toast.action && (
+          <ToastAction onClick={toast.action.onClick} variant={toast.variant}>
+            {toast.action.label}
+          </ToastAction>
+        )}
+        <ToastClose onClick={() => removeToast(toast.id)} variant={toast.variant} />
+      </div>
+    </div>
+  );
+};
+
+export const ToastTitle = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className = "", ...props }, ref) => {
     const baseStyles = "text-sm font-semibold";
     return <div ref={ref} className={`${baseStyles} ${className}`} {...props} />;
@@ -122,9 +136,7 @@ export const ToastTitle = React.forwardRef<HTMLDivElement, ToastTitleProps>(
 
 ToastTitle.displayName = "ToastTitle";
 
-interface ToastDescriptionProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-export const ToastDescription = React.forwardRef<HTMLDivElement, ToastDescriptionProps>(
+export const ToastDescription = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className = "", ...props }, ref) => {
     const baseStyles = "text-sm opacity-90";
     return <div ref={ref} className={`${baseStyles} ${className}`} {...props} />;
@@ -173,7 +185,12 @@ export const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
     const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${className}`;
 
     return (
-      <button ref={ref} className={combinedClassName} type="button" {...props}>
+      <button
+        ref={ref}
+        className={combinedClassName}
+        type="button"
+        {...props}
+      >
         <X className="h-4 w-4" />
       </button>
     );
