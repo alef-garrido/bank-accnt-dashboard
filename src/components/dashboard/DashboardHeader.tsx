@@ -8,7 +8,7 @@ import {
   SelectValue,
 } from "../ui/select";
 import type { DateRange } from "../../types/finance";
-import { useFinance } from "../../context/FinanceContext";
+import { useFinance } from "../../contexts/FinanceContext";
 import { useToast } from "../../hooks/toast-manager";
 
 interface DashboardHeaderProps {
