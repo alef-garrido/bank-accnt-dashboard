@@ -1,28 +1,26 @@
-# Financial Dev Dashboard 🚀
+# Front-End:Financial Dev Dashboard 🚀
 
-Un dashboard de finanzas personales construido bajo la metodología SCRUM, enfocado en la visualización de datos en tiempo real y persistencia local.
+Un dashboard de finanzas personales enfocado en la visualización de datos en tiempo real y persistencia local (FrontEnd Only).
+
+![Alef Lemat's Financial Dashboard](./public/financial-dev-dashboard.png)
 
 ## Características
-Visualización Avanzada: Gráficos dinámicos (Línea, Donut, Barras) utilizando Recharts.
+- Visualización Avanzada: Gráficos dinámicos (Línea, Donut, Barras) utilizando Recharts.
 
-Gestión de Transacciones: CRUD completo de ingresos y gastos con filtrado automático.
+- Gestión de Transacciones: CRUD completo de ingresos y gastos con filtrado automático.
 
-Persistencia de Datos: Implementación de Custom Hooks para sincronización con localStorage.
+- Persistencia de Datos: Implementación de Custom Hooks para sincronización con localStorage.
 
-UI/UX Moderna: Diseño responsivo "Mobile-First" con Tailwind CSS e iconos de alta calidad.
+- UI/UX Moderna: Diseño responsivo "Mobile-First" con Tailwind CSS e iconos de alta calidad.
 
-Arquitectura Limpia: Estructura de componentes atómicos y utilidades separadas por lógica de negocio.
+- Arquitectura Limpia: Estructura de componentes atómicos y utilidades separadas por lógica de negocio.
 
 ## Stack Tecnológico
-Core: React 18 + Vite.
-
-Lenguaje: TypeScript (Tipado fuerte para seguridad de datos).
-
-Estilos: Tailwind CSS.
-
-Gráficos: Recharts.
-
-Iconografía: React Icons (Heroicons).
+- Core: React 18 + Vite.
+- Lenguaje: TypeScript (Tipado fuerte para seguridad de datos).
+- Estilos: Tailwind CSS.
+- Gráficos: Recharts.
+- Iconografía: React Icons (Heroicons).
 
 ## Arquitectura del Proyecto
 
@@ -44,4 +42,4 @@ Metodologías Ágiles: Desarrollo basado en User Stories y Epics.
 
 Optimización de Renderizado: Uso eficiente de estados de React para evitar re-renders innecesarios en la tabla de datos.
 
-Creado por Armando Garrido (alef lemat) - [GitHub]()
+Creado por Armando Garrido (alef lemat) - [GitHub](https://github.com/alef-garrido)
