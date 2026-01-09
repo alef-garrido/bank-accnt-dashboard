@@ -24,10 +24,34 @@ export function DashboardHeader({
   isDark,
   onThemeToggle,
 }: DashboardHeaderProps) {
-  const { resetToDemo } = useFinance();
+  const { state, resetToDemo } = useFinance();
   const { toast } = useToast();
 
+  const handleExportCSV = () => {
+    const headers = ["Date", "Description", "Category", "Type", "Amount"];
+    const rows = state.transactions.map((t) => [
+      t.date,
+      t.description,
+      t.category,
+      t.type,
+      t.amount.toString(),
+    ]);
 
+    const csvContent = [headers, ...rows]
+      .map((row) => row.map((cell) => `"${cell}"`).join(","))
+      .join("\n");
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `transactions_${new Date().toISOString().split("T")[0]}.csv`;
+    link.click();
+
+    toast({
+      title: "Export complete",
+      description: `Exported ${state.transactions.length} transactions to CSV.`,
+    });
+  };
 
   const handleReset = () => {
     resetToDemo();
@@ -43,9 +67,9 @@ export function DashboardHeader({
         <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-chart-4 bg-clip-text text-transparent">
           Finance Dashboard
         </h1>
-        <h2 className="font-mono mt-1">
+        <p className="text-muted-foreground mt-1">
           Track your income and expenses
-        </h2>
+        </p>
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
@@ -62,7 +86,7 @@ export function DashboardHeader({
           </SelectContent>
         </Select>
 
-        <Button variant="outline" size="icon" >
+        <Button variant="outline" size="icon" onClick={handleExportCSV}>
           <Download className="h-4 w-4" />
         </Button>
 
