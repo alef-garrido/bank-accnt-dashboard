@@ -103,8 +103,8 @@ export function TransactionsTable({ dateRange }: TransactionsTableProps) {
   );
 
   return (
-    <Card className="animate-fade-in" style={{ animationDelay: "300ms" }}>
-      <CardHeader className="pb-4">
+    <Card className="animate-fade-in flex flex-col min-h-96 lg:h-full overflow-hidden" style={{ animationDelay: "300ms" }}>
+      <CardHeader className="pb-4 flex-shrink-0 border-b">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <CardTitle className="text-lg font-semibold">Recent Transactions</CardTitle>
           <div className="relative w-full sm:w-64">
@@ -118,10 +118,10 @@ export function TransactionsTable({ dateRange }: TransactionsTableProps) {
           </div>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="rounded-lg border">
+      <CardContent className="flex-1 flex flex-col p-0 min-h-0 overflow-hidden">
+        <div className="rounded-none border-0 border-b flex flex-col flex-1 overflow-hidden max-h-[500px]">
           <Table>
-            <TableHeader>
+            <TableHeader className="sticky top-0 text-white dark:bg-black z-10">
               <TableRow>
                 <TableHead>
                   <SortButton field="date">Date</SortButton>
@@ -160,7 +160,7 @@ export function TransactionsTable({ dateRange }: TransactionsTableProps) {
         </div>
 
         {hasMore && (
-          <div className="mt-4 flex justify-center">
+          <div className="flex justify-center flex-shrink-0 py-4 px-4 border-t">
             <Button
               variant="outline"
               onClick={() => setVisibleCount((prev) => prev + 10)}

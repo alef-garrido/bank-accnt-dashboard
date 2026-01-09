@@ -66,7 +66,12 @@ function DashboardContent() {
             delay={200}
           />
         </div>
-
+        {/* Charts Row */}
+        <div className="grid gap-4 md:grid-cols-3">
+           <BalanceChart transactions={state.transactions} dateRange={dateRange} />
+           <CategoryChart transactions={state.transactions} dateRange={dateRange} />          
+          <IncomeExpenseChart transactions={state.transactions} dateRange={dateRange} />
+        </div>
         {/* Main Content Grid */}
         <div className="grid gap-6 lg:grid-cols-3">
           {/* Add Transaction Form */}
@@ -80,12 +85,7 @@ function DashboardContent() {
           </div>
         </div>
 
-        {/* Charts Row */}
-        <div className="grid gap-4 md:grid-cols-3">
-           <BalanceChart transactions={state.transactions} dateRange={dateRange} />
-           <CategoryChart transactions={state.transactions} dateRange={dateRange} />          
-          <IncomeExpenseChart transactions={state.transactions} dateRange={dateRange} />
-        </div>
+
       </div>
     </div>
   );
