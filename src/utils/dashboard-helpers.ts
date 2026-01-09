@@ -3,7 +3,7 @@ import { useToast } from "../hooks/toast-manager";
 import type { Transaction } from "../types/finance";
 
 export function useDashboardUtils() {
-  const { state, resetToDemo } = useFinance();
+  const { resetToDemo } = useFinance();
   const { toast } = useToast();
 
   const handleExportCSV = (transactions: Transaction[]) => {
