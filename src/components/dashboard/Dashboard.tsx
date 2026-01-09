@@ -5,6 +5,7 @@ import { filterTransactionsByDateRange, calculateTotals } from "../../lib/financ
 import { DashboardHeader } from "./DashboardHeader";
 import { StatCard } from "./StatCard";
 import { AddTransactionForm } from "./AddTransactionForm";
+import { TransactionsTable } from "./TansactionsTable";
 
 function DashboardContent() {
   const { state } = useFinance();
@@ -72,7 +73,7 @@ function DashboardContent() {
 
           {/* Transactions Table */}
           <div className="lg:col-span-2">
-            {/* <TransactionsTable dateRange={dateRange} /> */}
+            <TransactionsTable dateRange={dateRange} />
           </div>
         </div>
 
