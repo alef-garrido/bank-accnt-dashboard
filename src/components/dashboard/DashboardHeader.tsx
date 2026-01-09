@@ -43,9 +43,9 @@ export function DashboardHeader({
         <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-chart-4 bg-clip-text text-transparent">
           Finance Dashboard
         </h1>
-        <p className="text-muted-foreground mt-1">
+        <h2 className="font-mono mt-1">
           Track your income and expenses
-        </p>
+        </h2>
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
