@@ -7,12 +7,12 @@ const baseStyles =
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
 
 const variantStyles: Record<ButtonVariant, string> = {
-  default: "bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800",
-  destructive: "bg-red-600 text-white hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-800",
-  outline: "border border-gray-300 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800",
-  secondary: "bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600",
-  ghost: "hover:bg-gray-100 dark:hover:bg-gray-800",
-  link: "text-blue-600 underline-offset-4 hover:underline dark:text-blue-400",
+  default: "bg-primary text-primary-foreground hover:opacity-90 dark:bg-primary dark:text-primary-foreground",
+  destructive: "bg-destructive text-destructive-foreground hover:opacity-90 dark:bg-destructive dark:text-destructive-foreground",
+  outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-background dark:hover:bg-accent dark:hover:text-accent-foreground",
+  secondary: "bg-secondary text-secondary-foreground hover:opacity-90 dark:bg-secondary dark:text-secondary-foreground",
+  ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent dark:hover:text-accent-foreground",
+  link: "text-primary underline-offset-4 hover:underline dark:text-primary",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {

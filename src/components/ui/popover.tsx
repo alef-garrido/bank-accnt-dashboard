@@ -113,7 +113,7 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
     if (!open || !position) return null;
 
     const baseStyles =
-      "z-50 w-72 rounded-md border border-gray-300 bg-white p-4 text-gray-900 shadow-md outline-none animate-in fade-in-0 zoom-in-95 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100";
+      "z-50 w-72 rounded-md border border-border bg-popover p-4 text-popover-foreground shadow-md outline-none animate-in fade-in-0 zoom-in-95 dark:border-border dark:bg-popover dark:text-popover-foreground";
 
     return (
       <div

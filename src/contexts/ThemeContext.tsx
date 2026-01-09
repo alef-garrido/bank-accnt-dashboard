@@ -31,20 +31,24 @@ function getResolvedTheme(theme: Theme): "light" | "dark" {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("light");
-  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
-  const [mounted, setMounted] = useState(false);
+  const [theme, setThemeState] = useState<Theme>(() => {
+    if (typeof window === "undefined") return "light";
+    return (localStorage.getItem("theme") as Theme | null) || "light";
+  });
+  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") return "light";
+    const storedTheme = (localStorage.getItem("theme") as Theme | null) || "light";
+    return getResolvedTheme(storedTheme);
+  });
 
-  // Initialize theme from localStorage
+  // Initialize theme from localStorage and apply it
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme") as Theme | null;
     const initialTheme = storedTheme || "light";
     setThemeState(initialTheme);
-    setResolvedTheme(getResolvedTheme(initialTheme));
-    setMounted(true);
-
-    // Apply theme to document
-    applyTheme(getResolvedTheme(initialTheme));
+    const resolved = getResolvedTheme(initialTheme);
+    setResolvedTheme(resolved);
+    applyTheme(resolved);
   }, []);
 
   // Listen to system theme changes
@@ -78,10 +82,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } else {
       root.classList.remove("dark");
     }
-  }
-
-  if (!mounted) {
-    return <>{children}</>;
   }
 
   return (

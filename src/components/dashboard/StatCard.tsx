@@ -67,7 +67,7 @@ export function StatCard({ title, value, trend, type, delay = 0 }: StatCardProps
               <div className={`flex items-center gap-1 text-sm font-medium ${trendColor}`}>
                 <TrendIcon className="h-4 w-4" />
                 <span>{Math.abs(trend).toFixed(1)}%</span>
-                <span className="text-gray-600 dark:text-gray-400 font-normal">vs last period</span>
+                <span className="text-muted-foreground font-normal">vs last period</span>
               </div>
             )}
           </div>

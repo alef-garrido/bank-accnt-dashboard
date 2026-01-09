@@ -156,11 +156,12 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }
 
@@ -182,7 +183,9 @@
   }
 
   .glass {
-    @apply bg-card/80 backdrop-blur-sm border border-border/50;
+    background-color: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(0.5rem);
+    border: 1px solid hsl(var(--border) / 0.5);
   }
 
   .animate-count-up {

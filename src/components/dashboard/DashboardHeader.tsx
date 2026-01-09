@@ -24,7 +24,7 @@ export function DashboardHeader({
   isDark,
   onThemeToggle,
 }: DashboardHeaderProps) {
-  const { state, resetToDemo } = useFinance();
+  const { resetToDemo } = useFinance();
   const { toast } = useToast();
 
 

@@ -52,7 +52,7 @@ const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerProps>(
     const { value, setOpen, open } = useSelectContext();
 
     const baseStyles =
-      "flex h-10 w-full items-center justify-between rounded-md border border-gray-300 bg-white px-3 py-2 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-left";
+      "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-left dark:border-input dark:bg-background";
 
     const combinedClassName = `${baseStyles} ${className}`;
 
@@ -95,7 +95,7 @@ const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
     if (!open) return null;
 
     const baseStyles =
-      "absolute top-full left-0 right-0 mt-1 z-50 rounded-md border border-gray-300 bg-white shadow-lg overflow-hidden";
+      "absolute top-full left-0 right-0 mt-1 z-50 rounded-md border border-input shadow-lg overflow-hidden min-w-max";
 
     const combinedClassName = `${baseStyles} ${className}`;
 
@@ -103,6 +103,10 @@ const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
       <div
         ref={ref}
         className={combinedClassName}
+        style={{
+          backgroundColor: "hsl(var(--card))",
+          color: "hsl(var(--card-foreground))",
+        }}
         {...props}
         onMouseLeave={() => setOpen(false)}
       >
@@ -125,9 +129,9 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     const isSelected = selectedValue === value;
 
     const baseStyles =
-      "relative flex w-full cursor-pointer select-none items-center rounded-sm px-3 py-2 text-sm outline-none hover:bg-blue-100 hover:text-blue-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50";
+      "relative flex w-full cursor-pointer select-none items-center rounded-sm px-3 py-2 text-sm outline-none hover:bg-accent hover:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:hover:bg-accent dark:hover:text-accent-foreground";
 
-    const selectedStyles = isSelected ? "bg-blue-500 text-white hover:bg-blue-600 hover:text-white" : "";
+    const selectedStyles = isSelected ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground dark:bg-primary dark:text-primary-foreground" : "";
 
     const combinedClassName = `${baseStyles} ${selectedStyles} ${className}`;
 
