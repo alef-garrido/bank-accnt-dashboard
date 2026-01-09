@@ -8,8 +8,8 @@ import {
   SelectValue,
 } from "../ui/select";
 import type { DateRange } from "../../types/finance";
+import { useDashboardUtils } from "../../utils/dashboard-helpers";
 import { useFinance } from "../../contexts/FinanceContext";
-import { useToast } from "../../hooks/toast-manager";
 
 interface DashboardHeaderProps {
   dateRange: DateRange;
@@ -24,42 +24,8 @@ export function DashboardHeader({
   isDark,
   onThemeToggle,
 }: DashboardHeaderProps) {
-  const { state, resetToDemo } = useFinance();
-  const { toast } = useToast();
-
-  const handleExportCSV = () => {
-    const headers = ["Date", "Description", "Category", "Type", "Amount"];
-    const rows = state.transactions.map((t) => [
-      t.date,
-      t.description,
-      t.category,
-      t.type,
-      t.amount.toString(),
-    ]);
-
-    const csvContent = [headers, ...rows]
-      .map((row) => row.map((cell) => `"${cell}"`).join(","))
-      .join("\n");
-
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = `transactions_${new Date().toISOString().split("T")[0]}.csv`;
-    link.click();
-
-    toast({
-      title: "Export complete",
-      description: `Exported ${state.transactions.length} transactions to CSV.`,
-    });
-  };
-
-  const handleReset = () => {
-    resetToDemo();
-    toast({
-      title: "Data reset",
-      description: "Demo data has been restored.",
-    });
-  };
+  const { state } = useFinance();
+  const { handleExportCSV, handleReset } = useDashboardUtils();
 
   return (
     <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between animate-fade-in">
@@ -86,7 +52,7 @@ export function DashboardHeader({
           </SelectContent>
         </Select>
 
-        <Button variant="outline" size="icon" onClick={handleExportCSV}>
+        <Button variant="outline" size="icon" onClick={() => handleExportCSV(state.transactions)}>
           <Download className="h-4 w-4" />
         </Button>
 

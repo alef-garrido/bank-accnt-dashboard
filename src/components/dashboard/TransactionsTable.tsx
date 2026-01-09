@@ -121,7 +121,7 @@ export function TransactionsTable({ dateRange }: TransactionsTableProps) {
       <CardContent className="flex-1 flex flex-col p-0 min-h-0 overflow-hidden">
         <div className="rounded-none border-0 border-b flex flex-col flex-1 overflow-hidden max-h-[500px]">
           <Table>
-            <TableHeader className="sticky top-0 text-white dark:bg-black z-10">
+            <TableHeader className="sticky top-0 bg-card z-10">
               <TableRow>
                 <TableHead>
                   <SortButton field="date">Date</SortButton>
