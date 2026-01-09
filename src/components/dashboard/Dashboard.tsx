@@ -5,7 +5,7 @@ import { filterTransactionsByDateRange, calculateTotals } from "../../lib/financ
 import { DashboardHeader } from "./DashboardHeader";
 import { StatCard } from "./StatCard";
 import { AddTransactionForm } from "./AddTransactionForm";
-import { TransactionsTable } from "./TansactionsTable";
+import { TransactionsTable } from "./TransactionsTable";
 
 function DashboardContent() {
   const { state } = useFinance();
