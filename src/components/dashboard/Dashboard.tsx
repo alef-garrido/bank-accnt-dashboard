@@ -6,6 +6,9 @@ import { DashboardHeader } from "./DashboardHeader";
 import { StatCard } from "./StatCard";
 import { AddTransactionForm } from "./AddTransactionForm";
 import { TransactionsTable } from "./TransactionsTable";
+import { BalanceChart } from "./BalanceChart";
+import { CategoryChart } from "./CategoryChart";
+import { IncomeExpenseChart } from "./IncomeExpenseChart";
 
 function DashboardContent() {
   const { state } = useFinance();
@@ -79,9 +82,9 @@ function DashboardContent() {
 
         {/* Charts Row */}
         <div className="grid gap-4 md:grid-cols-3">
-          {/* <BalanceChart transactions={state.transactions} dateRange={dateRange} />
-          <CategoryChart transactions={state.transactions} dateRange={dateRange} />
-          <IncomeExpenseChart transactions={state.transactions} dateRange={dateRange} /> */}
+           <BalanceChart transactions={state.transactions} dateRange={dateRange} />
+           <CategoryChart transactions={state.transactions} dateRange={dateRange} />          
+          <IncomeExpenseChart transactions={state.transactions} dateRange={dateRange} />
         </div>
       </div>
     </div>
