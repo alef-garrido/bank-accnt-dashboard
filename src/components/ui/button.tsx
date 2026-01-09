@@ -4,7 +4,7 @@ export type ButtonVariant = "default" | "destructive" | "outline" | "secondary" 
 export type ButtonSize = "default" | "sm" | "lg" | "icon";
 
 const baseStyles =
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer";
 
 const variantStyles: Record<ButtonVariant, string> = {
   default: "bg-primary text-primary-foreground hover:opacity-90 dark:bg-primary dark:text-primary-foreground",
