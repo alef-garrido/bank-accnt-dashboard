@@ -25,7 +25,7 @@ const preview: Preview = {
       }, [])
       
       return (
-        <div className="w-full h-screen bg-background text-foreground">
+        <div className="bg-background text-foreground">
           <Story />
         </div>
       )

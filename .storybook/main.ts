@@ -15,13 +15,12 @@ const config: StorybookConfig = {
   "framework": "@storybook/react-vite",
   viteFinal: async (config) => {
     const { default: tailwindcss } = await import('@tailwindcss/vite');
-    const tailwindConfig = (await import('../tailwind.config.js')).default;
     
     if (!config.plugins) {
       config.plugins = [];
     }
     
-    config.plugins.unshift(tailwindcss(tailwindConfig));
+    config.plugins.unshift(tailwindcss());
     return config;
   }
 };
