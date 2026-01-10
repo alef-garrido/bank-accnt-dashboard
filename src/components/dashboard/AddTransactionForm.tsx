@@ -72,7 +72,7 @@ export function AddTransactionForm() {
               className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
                 type === "expense"
                   ? "gradient-warning text-white shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
+                  : "text-muted-foreground hover:text-foreground cursor-pointer"
               }`}
             >
               Expense
@@ -83,7 +83,7 @@ export function AddTransactionForm() {
               className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
                 type === "income"
                   ? "gradient-success text-white shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
+                  : "text-muted-foreground hover:text-foreground cursor-pointer"
               }`}
             >
               Income
