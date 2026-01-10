@@ -9,6 +9,7 @@ type Story = StoryObj;
 
 const meta: Meta = {
   title: "Dashboard/DashboardHeader",
+  component: DashboardHeader,
   parameters: {
     layout: "padded",
   },

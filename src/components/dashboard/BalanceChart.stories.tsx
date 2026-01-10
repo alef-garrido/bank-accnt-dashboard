@@ -7,6 +7,7 @@ type Story = StoryObj;
 
 const meta: Meta = {
   title: "Dashboard/BalanceChart",
+  component: BalanceChart,
   parameters: {
     layout: "padded",
   },

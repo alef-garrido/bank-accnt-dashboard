@@ -7,6 +7,7 @@ type Story = StoryObj;
 
 const meta: Meta = {
   title: "Dashboard/AddTransactionForm",
+  component: AddTransactionForm,
   parameters: {
     layout: "padded",
   },

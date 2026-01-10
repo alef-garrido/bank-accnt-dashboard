@@ -7,6 +7,7 @@ type Story = StoryObj;
 
 const meta: Meta = {
   title: "Dashboard/CategoryChart",
+  component: CategoryChart,
   parameters: {
     layout: "padded",
   },
@@ -19,12 +20,12 @@ export default meta;
 const generateMockTransactions = (daysBack: number): Transaction[] => {
   const transactions: Transaction[] = [];
   const today = new Date();
-  const categories: Array<{ category: "food" | "transport" | "entertainment" | "utilities" | "healthcare" | "shopping" | "other"; amount: number }> = [
+  const categories: Array<{ category: "food" | "transportation" | "entertainment" | "utilities" | "health" | "shopping" | "other"; amount: number }> = [
     { category: "food", amount: 45 },
-    { category: "transport", amount: 35 },
+    { category: "transportation", amount: 35 },
     { category: "entertainment", amount: 60 },
     { category: "utilities", amount: 80 },
-    { category: "healthcare", amount: 25 },
+    { category: "health", amount: 25 },
     { category: "shopping", amount: 120 },
     { category: "other", amount: 30 },
   ];
