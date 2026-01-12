@@ -90,7 +90,7 @@ const AlertDialogContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes
     if (!open) return null;
 
     const baseStyles =
-      "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-border bg-card text-card-foreground p-6 shadow-lg duration-200 rounded-lg dark:border-border dark:bg-card dark:text-card-foreground";
+      "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-border p-6 duration-200 rounded-lg text-foreground";
 
     return (
       <>
@@ -98,6 +98,9 @@ const AlertDialogContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes
         <div
           ref={ref}
           className={`${baseStyles} ${className}`}
+          style={{
+            backgroundColor: document.documentElement.classList.contains('dark') ? '#000000' : '#ffffff',
+          }}
           {...props}
         >
           {children}
