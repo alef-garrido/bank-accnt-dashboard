@@ -10,9 +10,6 @@ function AppContent() {
   return (
     <ToastProvider>
       <TooltipProvider>
-        <h1 className='text-3xl font-bold my-6 text-center'>
-          Financial Analytics Dashboard
-        </h1>
         <hr />
         <Dashboard />
         <Toaster />

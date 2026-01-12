@@ -30,7 +30,7 @@ export function DashboardHeader({
   return (
     <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between animate-fade-in">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-chart-4 bg-clip-text text-transparent">
+        <h1 className="text-3xl font-mono tracking-tight">
           Finance Dashboard
         </h1>
         <p className="text-muted-foreground mt-1">
